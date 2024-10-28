@@ -6,30 +6,36 @@ html(lang="fr")
     title Liste des Catways
     style.
       body {
-        font-family: Arial, sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Utiliser une police moderne */
         background-color: #f4f4f9;
         padding: 20px;
+        margin: 0;
       }
       h1 {
         color: #333;
         text-align: center;
+        margin-bottom: 20px;
+        font-size: 2.5rem; /* Taille de police plus grande pour le titre */
       }
       table {
         width: 100%;
         border-collapse: collapse;
         margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre au tableau */
       }
       th, td {
         padding: 12px;
         text-align: left;
         border-bottom: 1px solid #ddd;
+        font-size: 1rem; /* Taille de police uniforme */
       }
       th {
         background-color: #007BFF;
         color: white;
+        font-weight: bold; /* Mettre le texte en gras */
       }
       tr:hover {
-        background-color: #f1f1f1;
+        background-color: #e9ecef; /* Couleur d'arrière-plan plus douce au survol */
       }
       a {
         color: #007BFF;
@@ -42,8 +48,10 @@ html(lang="fr")
         background-color: #FF0000;
         color: white;
         border: none;
-        padding: 10px;
+        padding: 10px 15px; /* Espacement intérieur amélioré */
         cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s; /* Transition douce pour le survol */
       }
       button:hover {
         background-color: #cc0000;
@@ -51,6 +59,39 @@ html(lang="fr")
       form {
         display: inline;
       }
+      .create-button {
+        display: block;
+        margin: 30px auto; /* Espacement vertical amélioré */
+        padding: 12px 24px; /* Plus de rembourrage pour le bouton Créer */
+        background-color: #28a745;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.1rem; /* Taille de police augmentée pour le bouton */
+        transition: background-color 0.3s; /* Transition douce pour le survol */
+      }
+      .create-button:hover {
+        background-color: #218838; /* Couleur plus foncée au survol */
+      }
+      .footer {
+        text-align: center;
+        margin-top: 40px; /* Espacement au-dessus du pied de page */
+        font-size: 0.9rem; /* Taille de police plus petite pour le pied de page */
+        color: #555; /* Couleur plus douce pour le texte du pied de page */
+      }
+      .action-link {
+        margin-right: 30px; /* Espacement à droite pour les liens */
+      }
+      .delete-button {
+        margin-left: auto; /* Aligne le bouton Supprimer à droite */
+      }
+      .action-container {
+        display: flex; /* Utilise Flexbox pour l'alignement */
+        justify-content: flex-end; /* Aligne les actions à droite */
+        gap: 30px; /* Ajoute un espacement entre les éléments */
+      }
+
   body
     h1 Liste des Catways
     table
@@ -66,8 +107,11 @@ html(lang="fr")
             td #{catway.catwayNumber}
             td #{catway.type}
             td #{catway.catwayState}
-            td
-              a(href="/catways/edit/#{catway._id}") Éditer
+            td.action-container
+              a.action-link(href="/catways/#{catway._id}") Détails
+              a.action-link(href="/catways/edit/#{catway._id}") Éditer
               form(action="/catways/delete/#{catway._id}", method="POST")
-                button(type="submit") Supprimer
-    a(href="/catways/create") Créer un nouveau Catway
+                button.delete-button(type="submit") Supprimer
+    a.create-button(href="/catways/create") Créer un nouveau Catway
+    .footer
+      p &copy; 2024 Votre Société. Tous droits réservés.

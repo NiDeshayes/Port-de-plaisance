@@ -21,4 +21,7 @@ router.post('/edit/:id', isAuthenticated, ReservationController.updateReservatio
 // Route pour supprimer une réservation (protégée)
 router.post('/delete/:id', isAuthenticated, ReservationController.deleteReservation);
 
+// Route pour afficher les détails d'une réservation (protégée)
+router.get('/:id', isAuthenticated, ReservationController.showReservationDetail);
+
 module.exports = router;

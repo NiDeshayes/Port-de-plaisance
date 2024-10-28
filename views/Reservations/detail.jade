@@ -1,0 +1,119 @@
+doctype html
+html(lang="fr")
+  head
+    title Détails de la Réservation
+    style.
+      /* Réinitialisation des styles par défaut */
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      /* Styles globaux */
+      body {
+          font-family: 'Arial', sans-serif;
+          line-height: 1.6;
+          background-color: #f4f4f4;
+          color: #333;
+      }
+
+      .container {
+          width: 80%;
+          max-width: 900px;
+          margin: 20px auto;
+          padding: 20px;
+          background: #fff;
+          border-radius: 8px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+          font-size: 2.5em;
+          color: #2c3e50;
+          margin-bottom: 20px;
+      }
+
+      h2 {
+          font-size: 1.8em;
+          color: #34495e;
+          margin-bottom: 15px;
+      }
+
+      /* Styles pour la liste des informations de réservation */
+      ul {
+          list-style-type: none;
+          padding: 10px 20px;
+          border: 1px solid #ecf0f1;
+          border-radius: 5px;
+          background-color: #e8f4f8;
+      }
+
+      li {
+          margin: 10px 0;
+      }
+
+      /* Styles pour les boutons */
+      .buttons {
+          margin-top: 20px;
+      }
+
+      .btn {
+          display: inline-block;
+          padding: 10px 15px;
+          margin-right: 10px;
+          text-decoration: none;
+          border: none;
+          border-radius: 5px;
+          font-size: 1em;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+
+      .btn-primary {
+          background-color: #3498db;
+          color: white;
+      }
+
+      .btn-primary:hover {
+          background-color: #2980b9;
+      }
+
+      .btn-secondary {
+          background-color: #2ecc71;
+          color: white;
+      }
+
+      .btn-secondary:hover {
+          background-color: #27ae60;
+      }
+
+      .btn-danger {
+          background-color: #e74c3c;
+          color: white;
+      }
+
+      .btn-danger:hover {
+          background-color: #c0392b;
+      }
+
+      /* Style pour le formulaire */
+      form {
+          display: inline;
+      }
+  body
+    .container
+      h1 Détails de la Réservation
+      h2 Informations de la Réservation
+      ul
+        li: strong Nom du Client: #{reservation.clientName}
+        li: strong Nom du Bateau: #{reservation.boatName}
+        li: strong Numéro du Catway: #{reservation.catwayNumber}
+        li: strong Date de Check-In: #{new Date(reservation.checkIn).toLocaleDateString('fr-FR')}
+        li: strong Date de Check-Out: #{new Date(reservation.checkOut).toLocaleDateString('fr-FR')}
+
+      .buttons
+        a.btn.btn-primary(href='/reservations') Retour à la liste des réservations
+        a.btn.btn-secondary(href=`/reservations/edit/${reservation._id}`) Modifier la Réservation
+        form(action=`/reservations/${reservation._id}?_method=DELETE`, method="POST", style="display: inline;")
+          button.btn.btn-danger(type="submit") Supprimer la Réservation

@@ -21,4 +21,7 @@ router.post('/edit/:id', isAuthenticated, CatwayController.updateCatway);
 // Route pour supprimer un catway (protégée)
 router.post('/delete/:id', isAuthenticated, CatwayController.deleteCatway);
 
+// Route pour afficher les détails d'un catway (protégée)
+router.get('/:id', isAuthenticated, CatwayController.getCatwayDetails);
+
 module.exports = router;

@@ -1,5 +1,4 @@
-// controllers/catwayController.js
-const Catway = require('../models/Catway');// Assurez-vous que le modèle Catway est exporté correctement
+const Catway = require('../models/Catway'); // Assurez-vous que le modèle Catway est exporté correctement
 
 // Afficher tous les catways
 exports.getAllCatways = async (req, res) => {
@@ -8,7 +7,7 @@ exports.getAllCatways = async (req, res) => {
         res.render('catways/index', { catways }); // Rendre une vue pour afficher les catways
     } catch (error) {
         console.error('Error fetching catways:', error);
-        res.status(500).send('Internal Server Error1');
+        res.status(500).send('Internal Server Error');
     }
 };
 
@@ -26,7 +25,7 @@ exports.createCatway = async (req, res) => {
         res.redirect('/catways'); // Rediriger vers la liste des catways
     } catch (error) {
         console.error('Error creating catway:', error);
-        res.status(500).send('Internal Server Error2');
+        res.status(500).send('Internal Server Error');
     }
 };
 
@@ -40,7 +39,7 @@ exports.showEditCatwayForm = async (req, res) => {
         res.render('catways/edit', { catway }); // Rendre une vue pour éditer le catway
     } catch (error) {
         console.error('Error fetching catway for edit:', error);
-        res.status(500).send('Internal Server Error3');
+        res.status(500).send('Internal Server Error');
     }
 };
 
@@ -52,7 +51,7 @@ exports.updateCatway = async (req, res) => {
         res.redirect('/catways'); // Rediriger vers la liste des catways
     } catch (error) {
         console.error('Error updating catway:', error);
-        res.status(500).send('Internal Server Error4');
+        res.status(500).send('Internal Server Error');
     }
 };
 
@@ -63,6 +62,20 @@ exports.deleteCatway = async (req, res) => {
         res.redirect('/catways'); // Rediriger vers la liste des catways
     } catch (error) {
         console.error('Error deleting catway:', error);
-        res.status(500).send('Internal Server Error5');
+        res.status(500).send('Internal Server Error');
+    }
+};
+
+// Afficher les détails d'un catway
+exports.getCatwayDetails = async (req, res) => {
+    try {
+        const catway = await Catway.findById(req.params.id);
+        if (!catway) {
+            return res.status(404).send('Catway not found');
+        }
+        res.render('catways/detail', { catway }); // Rendre la vue pour afficher les détails du catway
+    } catch (error) {
+        console.error('Error fetching catway details:', error);
+        res.status(500).send('Internal Server Error');
     }
 };

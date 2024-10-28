@@ -15,7 +15,6 @@ exports.getAllReservations = async (req, res) => {
 // Afficher le formulaire de création d'une réservation avec les catways disponibles
 exports.showCreateReservationForm = async (req, res) => {
     try {
-        // Récupérer uniquement les catways disponibles
         const catways = await Catway.find({ catwayState: 'disponible' });
         res.render('reservations/create', { catways }); // Rendre une vue pour créer une réservation avec catways disponibles
     } catch (error) {
@@ -82,6 +81,20 @@ exports.deleteReservation = async (req, res) => {
         res.redirect('/reservations'); // Rediriger vers la liste des réservations
     } catch (error) {
         console.error('Erreur lors de la suppression de la réservation :', error);
+        res.status(500).send('Erreur interne du serveur');
+    }
+};
+
+// Afficher les détails d'une réservation
+exports.showReservationDetail = async (req, res) => {
+    try {
+        const reservation = await Reservation.findById(req.params.id);
+        if (!reservation) {
+            return res.status(404).send('Réservation introuvable');
+        }
+        res.render('reservations/detail', { reservation }); // Rendre la vue pour les détails de la réservation
+    } catch (error) {
+        console.error('Erreur lors de la récupération des détails de la réservation :', error);
         res.status(500).send('Erreur interne du serveur');
     }
 };
