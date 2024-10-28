@@ -1,0 +1,92 @@
+doctype html
+html(lang="fr")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Créer une réservation
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        padding: 20px;
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+      }
+      input, select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .error {
+        color: red;
+        font-size: 0.9em;
+        margin-bottom: 15px;
+      }
+  body
+    h1 Créer une nouvelle réservation
+    form(action="/reservations/create", method="POST", onsubmit="return validateForm()")
+      label(for="clientName") Nom du client
+      input(type="text", name="clientName", id="clientName", placeholder="Nom du client", required)
+
+      label(for="boatName") Nom du bateau
+      input(type="text", name="boatName", id="boatName", placeholder="Nom du bateau", required)
+
+      label(for="catwayNumber") Numéro de catway
+      select(name="catwayNumber", id="catwayNumber", required)
+        option(value="", disabled selected) Sélectionnez un catway
+        if catways && catways.length
+          each catway in catways
+            option(value=catway.catwayNumber)= catway.catwayNumber 
+        else
+          option(value="", disabled) Aucun catway disponible
+
+      label(for="checkIn") Date d'arrivée
+      input(type="date", name="checkIn", id="checkIn", required)
+
+      label(for="checkOut") Date de départ
+      input(type="date", name="checkOut", id="checkOut", required)
+
+      button(type="submit") Créer
+
+    a(href="/reservations") Retour à la liste des réservations
+
+    script.
+      function validateForm() {
+        const checkIn = document.getElementById("checkIn").value;
+        const checkOut = document.getElementById("checkOut").value;
+        
+        if (checkIn && checkOut && new Date(checkOut) <= new Date(checkIn)) {
+          alert("La date de départ doit être postérieure à la date d'arrivée.");
+          return false;
+        }
+        return true;
+      }

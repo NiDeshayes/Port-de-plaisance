@@ -1,0 +1,53 @@
+doctype html
+html(lang="fr")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Modifier la réservation
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        padding: 20px;
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #218838;
+      }
+  body
+    h1 Modifier la réservation
+    form(action=`/reservations/edit/${reservation._id}`, method="POST")
+      input(type="text", name="clientName", value=reservation.clientName, required)
+      input(type="text", name="boatName", value=reservation.boatName, required)
+      input(type="text", name="catwayNumber", value=reservation.catwayNumber, required)
+      input(type="date", name="checkIn", value=reservation.checkIn.toISOString().substring(0, 10), required)
+      input(type="date", name="checkOut", value=reservation.checkOut.toISOString().substring(0, 10), required)
+      button(type="submit") Modifier
+    a(href="/reservations") Retour à la liste des réservations

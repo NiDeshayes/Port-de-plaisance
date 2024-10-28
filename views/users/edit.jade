@@ -1,0 +1,74 @@
+doctype html
+html(lang="fr")
+  head
+    title Modifier l'Utilisateur
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        padding: 20px;
+      }
+      .container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        background: white;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      a {
+        display: inline-block;
+        margin-top: 15px;
+        text-align: center;
+        color: #007BFF;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+  body
+    .container
+      h1 Modifier l'Utilisateur
+      form(action=`/users/edit/${user._id}`, method='post')
+        label(for='name') Nom:
+        input(type='text', name='name', value=user.name, required=true)
+
+        label(for='email') Email:
+        input(type='email', name='email', value=user.email, required=true)
+
+        label(for='password') Mot de passe:
+        input(type='password', name='password', required=true)
+
+        button(type='submit') Modifier
+      a(href='/users') Retour à la Liste

@@ -1,0 +1,61 @@
+doctype html
+html(lang="fr")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Liste des utilisateurs
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        padding: 20px;
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+      a {
+        display: inline-block;
+        margin: 20px 0;
+        padding: 10px 15px;
+        background-color: #007BFF;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        text-align: center;
+      }
+      a:hover {
+        background-color: #0056b3;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        background: #ffffff;
+        margin: 5px 0;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      li a {
+        background-color: #28a745;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-decoration: none;
+      }
+      li a:hover {
+        background-color: #218838;
+      }
+  body
+    h1 Liste des utilisateurs
+    a(href="/users/create") Créer un nouvel utilisateur
+    ul
+      each user in users
+        li
+          | #{user.name} - #{user.email} 
+          a(href=`/users/edit/${user._id}`) Modifier

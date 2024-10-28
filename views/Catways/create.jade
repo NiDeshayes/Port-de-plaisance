@@ -1,0 +1,75 @@
+doctype html
+html(lang="fr")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Créer un Catway
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        padding: 20px;
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+      input, select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      a {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #007BFF;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+  body
+    h1 Créer un Catway
+    form(action="/catways/create", method="POST")
+      div
+        label(for="catwayNumber") Catway Number
+        input(type="text", name="catwayNumber", required)
+      div
+        label(for="type") Type
+        select(name="type", required)
+          option(value="long") Long
+          option(value="short") Court
+      div
+        label(for="catwayState") État
+        input(type="text", name="catwayState", required)
+      div
+        button(type="submit") Créer
+    a(href="/catways") Retour à la liste des Catways

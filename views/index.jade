@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    title Gestion de Réservations - Catways
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='icon', href='/images/Favicon.webp', type='image/x-icon') 
+  body
+    // En-tête de la page
+    header.navbar
+      div.logo
+        img(src='/images/logo.png', alt='Logo du site')
+      ul.nav-links
+        // Liens de navigation
+        each link in navigationLinks
+          li
+            a(href=link.url)= link.name
+        // Lien de déconnexion ou de connexion
+        if user
+          li
+            a(href='/users/logout') Se déconnecter
+        else
+          li
+            a(href='/users/login') Se connecter
+          // Ajout d'un espace vide si l'utilisateur n'est pas connecté
+          li
+          
+
+    // Contenu principal
+    main.container
+      h1 Bienvenue dans le Système de Gestion des Réservations de Catways
+      p Planifiez vos réservations pour les catways rapidement et efficacement.
+
+      // Liste des actions disponibles
+      section.actions
+        h2 Vos options :
+        ul
+          li
+            a(href='/reservations') Consulter les réservations
+          li
+            a(href='/reservations/create') Créer une nouvelle réservation
+          li
+            a(href='/users') Gestion des utilisateurs
+
+    // Pied de page
+    footer
+      p &copy; 2024 Gestion des Catways. Tous droits réservés.

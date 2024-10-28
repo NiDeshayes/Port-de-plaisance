@@ -1,0 +1,59 @@
+doctype html
+html
+  head
+    title Créer un Utilisateur
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        padding: 20px;
+      }
+      .container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      label {
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+      input {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        padding: 10px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+  body
+    .container
+      h1 Créer un Nouvel Utilisateur
+      form(action='/users/create', method='post')
+        label(for='name') Nom:
+        input(type='text', name='name', required=true)
+        label(for='email') Email:
+        input(type='email', name='email', required=true)
+        label(for='password') Mot de passe:
+        input(type='password', name='password', required=true)
+        button(type='submit') Créer
+      a(href='/users') Retour à la Liste
