@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 const clientOptions = {
-    dbName: 'apinode' 
+    dbName: 'test' 
 };
 
 // Fonction pour initialiser la connexion à la base de données
