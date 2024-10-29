@@ -39,13 +39,13 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash()); // Ajouter connect-flash ici
+app.use(flash()); 
 
-// Middleware pour passer les messages flash au template
+
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
-    res.locals.error = req.flash('error'); // messages d'erreur
+    res.locals.error = req.flash('error'); 
     next();
 });
 

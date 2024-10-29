@@ -9,11 +9,11 @@ const clientOptions = {
 exports.initClientDbConnection = async () => {
     try {
         // Afficher l'URL de connexion pour le débogage
-        console.log('MongoDB URL:', process.env.URL_MONGO);
+        
 
         // Connexion à MongoDB
         await mongoose.connect(process.env.URL_MONGO, clientOptions);
-        console.log('Connected to MongoDB');
+        
 
         // Définition des schémas Mongoose
 
@@ -45,9 +45,8 @@ exports.initClientDbConnection = async () => {
         const Catway = mongoose.models.Catway || mongoose.model('Catway', CatwaySchema);
         const Reservation = mongoose.models.Reservation || mongoose.model('Reservation', ReservationSchema);
 
-        // Activer le mode debug de Mongoose
-        mongoose.set('debug', true);
-
+        
+        
         // Retourner les modèles
         return { User, Catway, Reservation };
     } catch (error) {

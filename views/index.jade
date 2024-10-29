@@ -16,15 +16,7 @@ html
         each link in navigationLinks
           li
             a(href=link.url)= link.name
-        // Lien de déconnexion ou de connexion
-        if user
-          li
-            a(href='/users/logout') Se déconnecter
-        else
-          li
-            a(href='/users/login') Se connecter
-          // Ajout d'un espace vide si l'utilisateur n'est pas connecté
-          li
+        
           
 
     // Contenu principal

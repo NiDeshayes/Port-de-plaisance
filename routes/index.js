@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
     navigationLinks: [
       { name: 'Voir les Catways', url: '/catways' },
       { name: 'Réservations', url: '/reservations' },
-      { name: 'Inscription', url: '/users/create' }
+      { name: 'Utilisateurs', url: '/users' }
     ]
   });
 });
